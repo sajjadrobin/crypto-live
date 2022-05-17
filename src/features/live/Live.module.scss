@@ -1,0 +1,68 @@
+@use "../../styles/fonts";
+.liveContainer {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-rows: 50px 10px 1fr ;    
+    grid-template-areas: 
+    "search"
+    "status"
+    "content";
+    
+    &Search {
+        background-color: grey;
+        grid-area: search;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 1rem;
+        
+        >input {
+            @include fonts.general;
+        }
+        >button {
+            @include fonts.general;
+        }
+      
+    }
+    &List {
+        grid-area: content;
+        display: grid;        
+        grid-gap: 20px;
+        grid-template-columns: repeat(auto-fill,minmax(375px, 1fr) );        
+        height: 200px;
+        >li {
+            list-style: none;            
+            background-color: lightgray;
+            padding: 1.2rem;
+            color: black;            
+            font-size: large;
+            font-weight: bold;
+            position: relative;
+
+            & > span:nth-child(1) {
+                display: block;
+                text-transform: capitalize;
+            }
+            & > span:nth-child(2) {
+                display: block;
+                opacity: 0.5;
+            }
+            & > button {
+                position:absolute;
+                bottom: 0.5rem;
+                right:0.5rem;
+                border: none;
+                background-color: lightgray;
+                opacity: 0.5;
+                @include fonts.general;
+                cursor: pointer;
+            }
+        }
+    }
+    &WebSocket {
+        grid-area: status;
+        color: green;
+        font-weight: 800;
+        text-align: center;
+    }
+}
